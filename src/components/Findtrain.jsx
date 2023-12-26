@@ -52,6 +52,7 @@ const Findtrain = () => {
         const response = await fetch(url + params);
         const result = await response.json();
         setTrainName(result.train_between_stations);
+        console.log(result.train_between_stations);
 
     }
 
@@ -75,7 +76,9 @@ const Findtrain = () => {
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 space-y-3 place-items-center'>
                     {trainName.map((train, index) => (
                         <Traininfo key={index} Trainname={train.train_name} Trainnumber={train.train_number}
-                            duration={train.duration} arrival={train.from_sta} departure={train.from_std} reaching={train.to_std} />
+                            duration={train.duration} arrival={train.from_sta} departure={train.from_std} reaching={train.to_std}
+                            distance={train.distance} halts={train.halt_stn} SFCode={train.from} STCode={train.to} SFname={train.from_station_name}  
+                            STname={train.to_station_name}/>
                     ))}
                 </div>
             )}
