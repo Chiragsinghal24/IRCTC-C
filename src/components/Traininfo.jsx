@@ -1,14 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Coachbox from './Coachbox';
 
-const Traininfo = ({ Trainname, Trainnumber, duration, arrival, departure, reaching,
-    distance, halts, SFCode, STCode,SFname,STname }) => {
+const Traininfo = ({ Trainname, Trainnumber, duration, arrival, reaching,
+    distance, halts, SFCode, STCode, SFname, STname,coachtype,date }) => {
 
     const durationString = duration;
     const [hours, minutes] = durationString.split(':').map(Number);
 
+
+    const [fairArray, setFairArray] = useState(coachtype);
+
+    // const fetchMe = async () => {
+    //     const url = `https://irctc1.p.rapidapi.com/api/v2/getFare?trainNo=${Trainnumber}&fromStationCode=${SFCode}&toStationCode=${STCode}`;
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //             'X-RapidAPI-Key': 'bea9d496e2msh8e936fd3b850333p186413jsn2c7e6fe355b9',
+    //             'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
+    //         }
+    //     };
+
+    //     try {
+    //         const response = await fetch(url, options);
+    //         const result = await response.json();
+    //         console.log("data result",result);
+    //         console.log("resut is:",result.data);
+    //         setFairArray(result.data);
+    //         console.log("fair array is:",fairArray);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     fetchMe();
+    // }, []);
+
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
-            <div className="card-body">
+            <div className="card-body w-full">
                 <h2 className="card-title">
                     {Trainname}
                     <div className="badge badge-secondary  ml-auto">{Trainnumber}</div>
@@ -44,11 +75,15 @@ const Traininfo = ({ Trainname, Trainnumber, duration, arrival, departure, reach
                         <p className='font-bold text-[10px] text-gray-400'>{STname}</p>
                     </div>
                 </div>
-                <div >
-                    <p>Arrival Time: <span className='text-red-600 text-md font-bold'>{arrival}</span></p>
-                    <p>Departure Time: <span className='text-blue-600 text-md font-bold'>{departure}</span></p>
-                    <p>Reached Time: <span className='text-gray-600 text-md font-bold'>{reaching}</span></p>
-                    <p>Total Journey: <span className='text-gray-600 text-md font-bold'>{duration}</span></p>
+                <div className='w-full gap-3 flex overflow-x-auto overflow-hidden'>
+                    {/* {trainCoach.map((item, index) => (
+                        <Coachbox key={index} coachType={item.coach_type} trainnum={Trainnumber}
+                            from={SFCode} to={STCode} />
+                    ))} */}
+
+                    {fairArray.map((item, index) => (
+                        <Coachbox key={index} classtype={item.coach_type} trainnumber={Trainnumber} from={SFCode} to={STCode} date={date} />
+                    ))}
 
                 </div>
             </div>
