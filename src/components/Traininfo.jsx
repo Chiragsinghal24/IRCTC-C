@@ -10,33 +10,6 @@ const Traininfo = ({ Trainname, Trainnumber, duration, arrival, reaching,
 
     const [fairArray, setFairArray] = useState(coachtype);
 
-    // const fetchMe = async () => {
-    //     const url = `https://irctc1.p.rapidapi.com/api/v2/getFare?trainNo=${Trainnumber}&fromStationCode=${SFCode}&toStationCode=${STCode}`;
-    //     const options = {
-    //         method: 'GET',
-    //         headers: {
-    //             'X-RapidAPI-Key': 'bea9d496e2msh8e936fd3b850333p186413jsn2c7e6fe355b9',
-    //             'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
-    //         }
-    //     };
-
-    //     try {
-    //         const response = await fetch(url, options);
-    //         const result = await response.json();
-    //         console.log("data result",result);
-    //         console.log("resut is:",result.data);
-    //         setFairArray(result.data);
-    //         console.log("fair array is:",fairArray);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchMe();
-    // }, []);
-
-
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body w-full">
@@ -76,10 +49,6 @@ const Traininfo = ({ Trainname, Trainnumber, duration, arrival, reaching,
                     </div>
                 </div>
                 <div className='w-full gap-3 flex overflow-x-auto overflow-hidden'>
-                    {/* {trainCoach.map((item, index) => (
-                        <Coachbox key={index} coachType={item.coach_type} trainnum={Trainnumber}
-                            from={SFCode} to={STCode} />
-                    ))} */}
 
                     {fairArray.map((item, index) => (
                         <Coachbox key={index} classtype={item.coach_type} trainnumber={Trainnumber} from={SFCode} to={STCode} date={date} />

@@ -57,12 +57,12 @@ const Findtrain = () => {
     }, [fromStation, toStation, dateValue]);
 
     return (
-        <>
-            <h1 className='text-center text-red-400 font-sans text-2xl'>Searched Trains</h1>
+        <div className="bg-gradient-to-l from-purple-950 to-black justify-center flex flex-col">
+            <h1 className='text-center text-white font-sans text-2xl mb-2'>Searched Trains</h1>
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className='grid gap-x-4 md:grid-cols-2 lg:grid-cols-3 space-y-3 place-items-center'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 space-y-3 place-items-center'>
                     {trainName.map((train, index) => (
                         <Traininfo
                             key={index}
@@ -89,7 +89,7 @@ const Findtrain = () => {
                     <Link to='/'>Back</Link>
                 </button>
             </div>
-        </>
+        </div>
     );
 };
 
