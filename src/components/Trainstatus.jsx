@@ -3,13 +3,9 @@ import Statusbox from './Statusbox'
 
 const Trainstatus = () => {
     return (
-
         <div>
             <div>
                 <Statusbox />
-            </div>
-            <div>
-                status
             </div>
         </div>
     )
