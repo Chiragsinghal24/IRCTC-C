@@ -5,7 +5,7 @@ const MenuItems = () => {
     return (
         <>
             <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-lg hover:shadow-yellow-300"><Link to='/'>Train between Stations</Link></li>
-            <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-sm hover:shadow-yellow-300"><Link to='/'>Live Train Status</Link></li>
+            <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-sm hover:shadow-yellow-300"><Link to='/livestatus'>Live Train Status</Link></li>
             <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-sm hover:shadow-yellow-300"><Link to='/status'>PNR Status</Link></li>
             <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-sm hover:shadow-yellow-300"><Link to='/'>Time Table</Link></li>
             <li className="text-black text-lg shadow-lg bg-red-100 rounded-md hover:shadow-sm hover:shadow-yellow-300"><Link to='/'>Seat Available</Link></li>
