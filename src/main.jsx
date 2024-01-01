@@ -7,6 +7,8 @@ import Findtrain from './components/Findtrain.jsx';
 import Trainstatus from './components/Trainstatus.jsx';
 import Searchtrain from './components/Livetrainstatus/Searchtrain.jsx';
 import Trainmap from './components/Livetrainstatus/Trainmap.jsx';
+import Traintimetable from './components/Timetable/traintimetable.jsx';
+import Seatmap from './components/Seatavailability/Seatmap.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,6 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/status' element={<Trainstatus />}/>
         <Route path='/livestatus' element={<Searchtrain />}/>
         <Route path="/trainmap" element={<Trainmap />} />
+        <Route path="/traintimetable" element={<Traintimetable />} />
+        <Route path="/seatmap" element={<Seatmap />} />
       </Routes>
     </Router>
   </React.StrictMode>,

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Coachbox = ({ classtype, trainnumber, from, to, date }) => {
   const [available, setAvailable] = useState("");
@@ -55,7 +56,7 @@ const Coachbox = ({ classtype, trainnumber, from, to, date }) => {
             </div>
           </div>
           <div className='mt-2'>
-            <button className='max-h-[30px] min-h-[20px] btn btn-gray-400 rounded-md rounded-t-none w-full'>Book Now</button>
+            <button className='max-h-[30px] min-h-[20px] btn btn-gray-400 rounded-md rounded-t-none w-full'><Link to="https://www.irctc.co.in/nget/train-search">Book Now</Link></button>
           </div>
         </div>
       )}

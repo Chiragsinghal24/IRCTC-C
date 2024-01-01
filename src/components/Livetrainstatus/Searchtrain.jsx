@@ -3,7 +3,7 @@ import { FaTrainSubway } from "react-icons/fa6";
 import Trainmap from './Trainmap';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Searchtrain = () => {
+const Searchtrain = ({title,buttonname}) => {
     const [trainnumber, setTrainNumber] = useState("");
     const [trainData, setTrainData] = useState([]);
     // const [isListOpen, setIsListOpen] = useState(true);
@@ -75,7 +75,7 @@ const Searchtrain = () => {
 
     return (
         <div className="bg-gradient-to-l from-purple-950 to-black flex flex-col w-screen min-h-screen">
-            <h1 className='text-center text-white font-sans text-2xl mb-2'>Check Live Train Status</h1>
+            <h1 className='text-center text-white font-sans text-2xl mb-2'>{title?title:"Check Train Route"}</h1>
             <div className='flex flex-col max-h-screen mt-2 items-center'>
                 <div className="card w-96 bg-base-100 shadow-xl h-[190px]">
                     <div className="card-body w-full flex flex-col rounded-md">
@@ -93,7 +93,7 @@ const Searchtrain = () => {
                             />
                         </div>
                         <div className='search_container'>
-                            <button className='btn btn-warning' onClick={handleTrainStatus}>Train Status</button>
+                            <button className='btn btn-warning' onClick={handleTrainStatus}>{buttonname?buttonname:"Train Route"}</button>
                         </div>
                     </div>
                 </div>
