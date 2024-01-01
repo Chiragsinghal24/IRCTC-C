@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Trainroute from './Trainroute'
 import { FaTrainSubway } from 'react-icons/fa6'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Trainmap = () => {
-    const { trainNumber, trainName } = useParams();
-    
-    console.log("trainname:",trainName);
-    console.log("train no",trainNumber);
+
+    const [stationdataarray, setstaiondatadrray] = useState([]);
+
+    const location = useLocation();
+    const trainNumber = new URLSearchParams(location.search).get('trainNumber');
+    const trainName = new URLSearchParams(location.search).get('trainName');
+    console.log("trainname:", trainName);
+    console.log("train no", trainNumber);
+
+    const handleButtonClick = async () => {
+        try {
+            const apiUrl = `https://gotrains.goibibo.com/v2/trains/status/${trainNumber}?flavour=mweb`;
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            const newStationDataArray = [
+                ...stationdataarray,
+                ...data.response.station_data
+                    .map(item => item.values)
+                    .flat()
+            ];
+
+            console.log(newStationDataArray);
+            setstaiondatadrray(newStationDataArray);
+
+            // Assuming data[0].items is an array of train data
+            console.log("fetchwd data", data.response.station_data);
+
+        } catch (error) {
+            alert("Please enter a correct train details.");
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        handleButtonClick();
+    }, [])
 
     return (
         <div className="bg-gradient-to-l from-purple-950 to-black flex flex-col w-screen min-h-screen">
@@ -20,15 +52,9 @@ const Trainmap = () => {
                 </div>
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 m-2 gap-2 place-content-center'>
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
-                <Trainroute />
+                {stationdataarray.map((item ,index)=>(
+                    <Trainroute key={index} stationcode={item.station.code} stationNumber={index+1} stationname={item.station.cn} state={item.station.stateName} distance={item.distance} arrival={item.schedule_arrival} depart={item.schedule_departure} />
+                ))}
             </div>
         </div>
     )
