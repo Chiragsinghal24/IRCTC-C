@@ -15,8 +15,9 @@ const Trainmap = () => {
 
     const handleButtonClick = async () => {
         try {
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const apiUrl = `https://gotrains.goibibo.com/v2/trains/status/${trainNumber}?flavour=mweb`;
-            const response = await fetch(apiUrl);
+            const response = await fetch(proxyUrl+apiUrl);
             const data = await response.json();
             const newStationDataArray = [
                 ...stationdataarray,
@@ -28,7 +29,6 @@ const Trainmap = () => {
             console.log(newStationDataArray);
             setstaiondatadrray(newStationDataArray);
 
-            // Assuming data[0].items is an array of train data
             console.log("fetchwd data", data.response.station_data);
 
         } catch (error) {
