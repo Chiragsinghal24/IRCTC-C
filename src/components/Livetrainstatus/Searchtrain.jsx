@@ -41,18 +41,18 @@ const Searchtrain = ({title,buttonname}) => {
         }
     };
 
-    const handleFetchStationData = async () =>{
-        try{
-            const url=`https://gotrains.goibibo.com/v2/trains/status/${routeTrainnumber}?flavour=mweb`
-            const trainResponse = await fetch(url);
-            const traindata = await trainResponse.json();
-            const bigDataValue=traindata.response.station_data;
+    // const handleFetchStationData = async () =>{
+    //     try{
+    //         const url=`https://gotrains.goibibo.com/v2/trains/status/${routeTrainnumber}?flavour=mweb`
+    //         const trainResponse = await fetch(url);
+    //         const traindata = await trainResponse.json();
+    //         const bigDataValue=traindata.response.station_data;
 
-        } catch (error) {
-            alert("Please enter a correct PNR number.");
-            console.error('Error fetching data:', error);
-        }
-    }
+    //     } catch (error) {
+    //         alert("Please enter a correct PNR number.");
+    //         console.error('Error fetching data:', error);
+    //     }
+    // }
     
     const handleInputChange = (selectedTrain) => {
         setRouteTrainNumber(selectedTrain.train_number);
